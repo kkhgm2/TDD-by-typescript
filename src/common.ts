@@ -26,4 +26,14 @@ export class Common {
 
     return isAdd || isMiuns || isMulti ||isDivide;
     }
+
+    //文字数字以外は禁止
+    hasStorangeWord(args: string[]) : boolean {
+        const reg = /\W+/;
+        for(let i = 0; i < args.length; i ++) {
+            if (args[i].match(reg)) return true;
+        }
+        return false;
+    }
+
 }
