@@ -1,19 +1,25 @@
-import { isArgsCountLess31, hasNumber } from '../common';
+// import { isArgsCountLess31, hasNumber } from '../common';
+import {Common} from "../common"
+let common: Common;
+
+beforeAll(() => {
+    common = new Common();
+})
 
 describe("共通処理、引数チェック", () => { 
     test('配列が３０以下の時', () => {
         const ary: Array<string> = new Array(30).fill("30");
-        expect(isArgsCountLess31(ary)).toBe(true);
+        expect(common.isArgsCountLess31(ary)).toBe(true);
     });
     
     test('配列が０の時', () => {
         const ary: Array<string> = new Array(0);
-        expect(isArgsCountLess31(ary)).toBe(false);
+        expect(common.isArgsCountLess31(ary)).toBe(false);
     });
     
     test('配列が３１以上の時', () => {
         const ary: Array<string> = new Array(31).fill("30");
-        expect(isArgsCountLess31(ary)).toBe(false);
+        expect(common.isArgsCountLess31(ary)).toBe(false);
     });
     // test('計算方法が設定されている', () => {
     //     const formula: string = "add";
@@ -27,11 +33,11 @@ describe("共通処理、引数チェック", () => {
 
     test('数字だけの時', () => {
         const ary: Array<string> = new Array(30).fill("30");
-        expect(hasNumber(ary)).toBe(true);
+        expect(common.hasNumber(ary)).toBe(true);
     });
     
     test('数字以外が含まれている時', () => {
         const ary: Array<string> = ["aa", "12"];
-        expect(hasNumber(ary)).toBe(false);
+        expect(common.hasNumber(ary)).toBe(false);
     });
 }); 

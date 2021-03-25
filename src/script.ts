@@ -1,4 +1,4 @@
-import {isArgsCountLess31, hasNumber} from "./common"
+import {Common} from "./common"
 
 let args: string[] = process.argv.slice(2);
 // console.log(args)
@@ -34,9 +34,11 @@ export const hasFormula = function (formula: string) : boolean {
     return isAdd || isMiuns || isMulti ||isDivide;
 }
 
+const common: Common = new Common();
+
 if (! hasFormula(formula))  errorMessage = "引数に計算方法を入力してください。"
-if (! isArgsCountLess31(args)) errorMessage = "引数が多すぎます。３０個までにしてください！";
-if (! hasNumber(targetNumber)) errorMessage = "計算する対象に、文字が含まれています！";
+if (! common.isArgsCountLess31(args)) errorMessage = "引数が多すぎます。３０個までにしてください！";
+if (! common.hasNumber(targetNumber)) errorMessage = "計算する対象に、文字が含まれています！";
 
 let sum :string;
 if (! errorMessage) {
