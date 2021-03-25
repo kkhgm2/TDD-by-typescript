@@ -17,4 +17,13 @@ export class Common {
         } 
         return true;
     }
+
+    hasFormula(formula: string) : boolean {
+        const isAdd :boolean = "add" == formula;
+        const isMiuns :boolean = "minus" == formula;
+        const isMulti :boolean = "multiple" == formula;
+        const isDivide :boolean = "divide" == formula;
+
+    return isAdd || isMiuns || isMulti ||isDivide;
+    }
 }
