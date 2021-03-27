@@ -4,12 +4,12 @@ export class Minus implements Formula{
     calculate(args: string[]): string {
         //callback, if 文をメソッドで持たせられれば、更に共通化可能？
         const callback = (a, b) => {
-            return a - parseInt(b);
+            let aa = a - parseInt(b);
+            return aa.toString();
         }
-        let sum = args.reduce(callback, 0) 
-        
-        if (sum < 0) {
-            console.log(sum)
+
+        let sum: string = args.reduce(callback);
+        if (parseInt(sum) < 0) {
             return "negative number";
         }
         return sum.toString();

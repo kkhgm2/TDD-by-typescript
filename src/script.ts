@@ -1,4 +1,5 @@
 import { Add } from "./add";
+import { Minus } from "./minus";
 import {Common} from "./common"
 import { Formula } from "./formula";
 
@@ -22,7 +23,9 @@ if (! common.isArgsCountLess31(args)) errorMessage = "引数が多すぎます�
 if (common.hasStorangeWord(args)) errorMessage = "不正な文字が入力されています"
 if (! common.hasNumber(targetNumber)) errorMessage = "計算する対象に、文字が含まれています！";
 
-const add:Formula = new Add();
+// const add:Formula = new Add();
+
+const add:Formula = new Minus();
 
 let sum :string;
 if (! errorMessage) {
