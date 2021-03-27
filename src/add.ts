@@ -1,7 +1,6 @@
-import { Common } from "./common";
+import { Formula } from "./formula";
 
-export class Add extends Common{
-//クラス化して、calculateの方がよさそう
+export class Add implements Formula{
     calculate(args: string[]): string {
         const callback = (a, b) => {
             return a + parseInt(b);

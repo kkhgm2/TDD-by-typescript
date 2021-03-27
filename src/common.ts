@@ -36,4 +36,6 @@ export class Common {
         return false;
     }
 
+    calculate(args: string[]): any {};
+
 }

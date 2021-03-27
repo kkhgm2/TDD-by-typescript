@@ -16,7 +16,7 @@ let errorMessage : string;
 const common: Common = new Common();
 const add:Add = new Add();
 
-if (! add.hasFormula(formula))  errorMessage = "引数に計算方法を入力してください。"
+if (! common.hasFormula(formula))  errorMessage = "引数に計算方法を入力してください。"
 if (! common.isArgsCountLess31(args)) errorMessage = "引数が多すぎます。３０個までにしてください！";
 if (common.hasStorangeWord(args)) errorMessage = "不正な文字が入力されています"
 if (! common.hasNumber(targetNumber)) errorMessage = "計算する対象に、文字が含まれています！";
