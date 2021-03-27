@@ -1,5 +1,8 @@
 import { Add } from "./add";
 import { Minus } from "./minus";
+import { Divide } from "./divide";
+import { Multiply } from "./multiply";
+
 import {Common} from "./common"
 import { Formula } from "./formula";
 
@@ -26,10 +29,11 @@ if (! common.hasNumber(targetNumber)) errorMessage = "計算する対象に、�
 // const add:Formula = new Add();
 
 const add:Formula = new Minus();
+const div:Formula = new Divide();
 
 let sum :string;
 if (! errorMessage) {
-    sum = add.calculate(targetNumber);
+    sum = div.calculate(targetNumber);
     console.log(sum)
 } else {
     console.log(errorMessage)
