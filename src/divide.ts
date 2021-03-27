@@ -11,10 +11,8 @@ export class Divide implements Formula{
             return aa.toString();
         }
 
-        let sum: string = args.reduce(callback);
-        if (parseInt(sum) < 0) {
-            return "negative number";
-        }
-        return sum.toString();
+        let div: string = args.reduce(callback);
+
+        return div;
     }
 }
