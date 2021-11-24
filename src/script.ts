@@ -12,33 +12,9 @@ const targetNumber: string[] = args.slice(1);
 // console.log(targetNumber)
 
 //共通処理、引数チェック
-let errorMessage: string;
-const common: Common = new Common();
-if (!common.hasFormula(formula))
-  errorMessage = "引数に計算方法を入力してください。";
-if (!common.isArgsCountLess31(args))
-  errorMessage = "引数が多すぎます。３０個までにしてください！";
-if (common.hasStorangeWord(args)) errorMessage = "不正な文字が入力されています";
-if (!common.hasNumber(targetNumber))
-  errorMessage = "計算する対象に、文字が含まれています！";
-
-let usingFormula: Formula;
-switch (formula) {
-  case "add":
-    usingFormula = Factory.makeAddInstance();
-    break;
-  case "minus":
-    usingFormula = Factory.makeMinusInstance();
-    break;
-  case "multiply":
-    usingFormula = Factory.makeMultiplyInstance();
-    break;
-  case "divide":
-    usingFormula = Factory.makeDivideInstance();
-    break;
-}
-
-if (! usingFormula) errorMessage = "add, minus, multiply, divide の中から選択してください！！"; 
+let errorMessage = checkArgs(formula);
+let usingFormula = selectFormula(formula);
+if (!usingFormula) errorMessage = "add, minus, multiply, divide の中から選択してください！！";
 
 let reslut: string;
 if (!errorMessage) {
@@ -46,4 +22,28 @@ if (!errorMessage) {
   console.log(reslut);
 } else {
   console.log(errorMessage);
+}
+
+
+function checkArgs(formula: string): string {
+  const common: Common = new Common();
+  if (!common.hasFormula(formula))
+    return "引数に計算方法を入力してください。";
+  if (!common.isArgsCountLess31(args))
+    return "引数が多すぎます。３０個までにしてください！";
+  if (common.hasStorangeWord(args))
+    return "不正な文字が入力されています";
+  if (!common.hasNumber(targetNumber))
+    return "計算する対象に、文字が含まれています！";
+}
+
+function selectFormula(formula: string): Formula {
+  if (formula == "add")
+    return Factory.makeAddInstance();
+  if (formula == "minus")
+    return Factory.makeMinusInstance();
+  if (formula == "multiply")
+    return Factory.makeMultiplyInstance();
+  if (formula == "divide")
+    return Factory.makeDivideInstance();
 }
